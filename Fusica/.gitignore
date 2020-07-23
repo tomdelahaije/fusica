@@ -1,0 +1,4 @@
+/.*
+!.gitignore
+/docbuild.xml
+/build/
