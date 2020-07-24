@@ -3,6 +3,5 @@
 !.gitignore
 /docbuild.xml
 /build/
-/Notebooks/
 /Notes/
 _*
