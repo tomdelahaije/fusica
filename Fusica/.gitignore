@@ -2,4 +2,4 @@
 !.gitignore
 /docbuild.xml
 /build/
-_*.m
+_*
