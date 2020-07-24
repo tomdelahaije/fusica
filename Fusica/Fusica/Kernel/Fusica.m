@@ -1,29 +1,3 @@
-(*Check messages to see if there are messages of one symbol shadowing those of another*)
-(*Separate SetShadow into SetShadow and UpdateShadow?*)
-(*Dispatch necessary?*)
-(*Simplify localization of Fuse; make it possible to contain all definitions in another package*)
-(*Functions with memoization are difficult to set up*)
-(*Add option to Fuse where user can specify which values to copy*)
-(*Add option to force substitution of shadow on right hand side (using Block for example)*)
-(*Symbol with subvalues will not force update for set:
-
-In[1]:= << Fusica`
-
-In[1]:= association[arg1___][arg2___] := Essociation[arg1][arg2];
-
-In[2]:= class := Fuse[Unevaluated[class], association]
-
-In[3]:= obj = class["x" -> 3];
-
-In[4]:= obj["x"]
-
-Out[4]= 3
-
-In[5]:= HoldPattern[obj_class]["Square"] := obj["x"]^2
-
-In[8]:= Trace[obj["Square"]]*)
-	
-	
 (*Begin Fusica package*)
 BeginPackage["Fusica`", {"GeneralUtilities`"}];
 
