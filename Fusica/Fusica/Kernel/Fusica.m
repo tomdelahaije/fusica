@@ -2,15 +2,6 @@
 BeginPackage["Fusica`", {"GeneralUtilities`"}];
 
 
-(*Unprotect symbols*)
-Unprotect[
-	$Tracker,
-	CopyTo,
-	Fuse,
-	FusePattern
-];
-
-
 (*Usage messages*)
 SetUsage[$Tracker, 
 	"$Tracker is a toggle variable which enables the updating behavior of Fuse when set to True."
@@ -28,13 +19,26 @@ SetUsage[FusePattern,
 ];
 	
 (*Messages*)
-CopyTo::locked 							= "Symbol `1` is locked.";
-CopyTo::attrmm 		= Fuse::attrmm 		= "Warning: attributes mismatch between symbols `1`.";
-CopyTo::kernsym 	= Fuse::kernsym		= "Warning: symbol `1` is implemented in the kernel and will be fused using aliasing, which may not reproduce the expected behavior exactly.";
-CopyTo::kernform 	= Fuse::kernform 	= "Warning: formatting values for symbol `1` are implemented in the kernel and cannot be fused.";
-Fuse::trackfail 						= "Warning: the value `1` added to the shadow of the symbols `2` may prevent the shadow from updating.";
+CopyTo::locked 		= "Symbol `1` is locked.";
+CopyTo::attrmm 		= \
+Fuse::attrmm 		= "Warning: attributes mismatch between symbols `1`.";
+CopyTo::kernsym 	= \ 
+Fuse::kernsym		= "Warning: symbol `1` is implemented in the kernel and will be fused using aliasing, which may not reproduce the expected behavior exactly.";
+CopyTo::kernform 	= \
+Fuse::kernform 		= "Warning: formatting values for symbol `1` are implemented in the kernel and cannot be fused.";
+Fuse::trackfail 	= "Warning: the value `1` added to the shadow of the symbols `2` may prevent the shadow from updating.";
 
 Off[Fuse::kernform];
+
+(*Syntax*)
+SyntaxInformation[CopyTo]		= {"ArgumentsPattern" -> {_, _.}};
+SyntaxInformation[Fuse]			= {"ArgumentsPattern" -> {__}};
+SyntaxInformation[FusePattern]	= {"ArgumentsPattern" -> {___}};
+
+(*Argument macro*)
+Macros`SetArgumentCount[CopyTo, {1, 2}];
+Macros`SetArgumentCount[Fuse, {1, Infinity}];
+Macros`SetArgumentCount[FusePattern, {0, Infinity}];
 
 
 (*Begin settings context*)
