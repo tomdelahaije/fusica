@@ -1,6 +1,8 @@
 (*Begin Fusica package*)
-BeginPackage["Fusica`", {"GeneralUtilities`"}];
+BeginPackage["Fusica`"];
 
+(*Private Needs*)
+Needs["GeneralUtilities`"];
 
 (*Usage messages*)
 SetUsage[$Tracker, 
