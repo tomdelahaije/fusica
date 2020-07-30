@@ -4,6 +4,7 @@ BeginPackage["Fusica`"];
 (*Private Needs*)
 Needs["GeneralUtilities`"];
 
+
 (*Usage messages*)
 SetUsage[$Tracker, 
 	"$Tracker is a toggle variable which enables the updating behavior of Fuse when set to True."
@@ -59,7 +60,12 @@ Begin["`Settings`"];
 			
 			Function[
 				Null, 
-				If[Length[Hold[##]] > 1, ToBoxes[Unevaluated[alias[##]]], ToBoxes[Unevaluated[##]]], 
+				Module[{strings = ToString /@ Unevaluated /@ Hold[##]},
+				
+					If[Length[strings] > 1, ToBoxes[Unevaluated[alias[##]]] & @@ strings, ToBoxes @@ strings]
+				
+				], 
+				(*If[Length[Hold[##]] > 1, ToBoxes[Unevaluated[alias[##]]], ToBoxes[Unevaluated[##]]], *)
 				HoldAllComplete
 			]
 			
