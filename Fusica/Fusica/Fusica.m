@@ -65,7 +65,6 @@ Begin["`Settings`"];
 					If[Length[strings] > 1, ToBoxes[Unevaluated[alias[##]]] & @@ strings, ToBoxes @@ strings]
 				
 				], 
-				(*If[Length[Hold[##]] > 1, ToBoxes[Unevaluated[alias[##]]], ToBoxes[Unevaluated[##]]], *)
 				HoldAllComplete
 			]
 			
