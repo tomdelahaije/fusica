@@ -1,7 +1,3 @@
-(* Paclet Info File *)
-
-(* created 2020/07/02*)
-
 Paclet[
     Name -> "Fusica",
     Version -> "0.3.1",
